@@ -46,6 +46,7 @@ func main() {
 - RACE CONDITION
   - two or more goroutines access the same variable
   - at least one of them is doing write operation
+
 - SYNCHRONIZATION
   - memory sharing
   - message passing

@@ -16,13 +16,8 @@ func main() {
 
 	go double(numbers, doubleChannel)
 
+	// range over a channel: loop until the channel is closed
 	for doubledNumber := range doubleChannel {
 		fmt.Println("received", doubledNumber)
 	}
 }
-
-/*
-
-- range over a channel: loop until the channel is closed
-
-*/
