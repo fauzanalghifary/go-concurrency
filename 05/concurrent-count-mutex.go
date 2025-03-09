@@ -16,7 +16,7 @@ func FindPrimeNumbers(
 ) {
 	for i := lowerBound; i <= upperBound; i++ {
 		if num.IsPrime(i) {
-			time.Sleep(100 * time.Millisecond) // Simulate a long-running operation
+			num.ProcessingPrimeNumbers(i)
 			fmt.Println("Robot", robotNumber, "found prime number:", i)
 
 			mu.Lock()
@@ -35,7 +35,7 @@ func main() {
 	var mu sync.Mutex
 
 	wg := sync.WaitGroup{}
-	wg.Add(8)
+	wg.Add(6)
 
 	go FindPrimeNumbers(1, 100, &wg, 1, &count, &mu)
 	go FindPrimeNumbers(101, 200, &wg, 2, &count, &mu)
@@ -43,11 +43,19 @@ func main() {
 	go FindPrimeNumbers(301, 400, &wg, 4, &count, &mu)
 	go FindPrimeNumbers(401, 500, &wg, 5, &count, &mu)
 	go FindPrimeNumbers(501, 600, &wg, 6, &count, &mu)
-	go FindPrimeNumbers(601, 700, &wg, 7, &count, &mu)
-	go FindPrimeNumbers(701, 800, &wg, 8, &count, &mu)
 
 	wg.Wait()
 
 	fmt.Println("Total prime numbers found:", count)
 	fmt.Println("finished in:", time.Since(start))
 }
+
+/*
+
+- SYNCHRONIZATION
+  - memory sharing => mutex
+  - message passing => channel
+- One of Go’s mottos is:
+  - “Share memory by communicating, don’t communicate by sharing memory.”
+	(https://go.dev/wiki/MutexOrChannel)
+*/

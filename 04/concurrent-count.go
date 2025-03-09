@@ -10,7 +10,7 @@ import (
 func FindPrimeNumbers(lowerBound, upperBound int, wg *sync.WaitGroup, robotNumber int, count *int) {
 	for i := lowerBound; i <= upperBound; i++ {
 		if num.IsPrime(i) {
-			time.Sleep(100 * time.Millisecond) // Simulate a long-running operation
+			num.ProcessingPrimeNumbers(i)
 			fmt.Println("Robot", robotNumber, "found prime number:", i)
 
 			*count++
@@ -26,7 +26,7 @@ func main() {
 	count := 0
 
 	wg := sync.WaitGroup{}
-	wg.Add(8)
+	wg.Add(6)
 
 	go FindPrimeNumbers(1, 100, &wg, 1, &count)
 	go FindPrimeNumbers(101, 200, &wg, 2, &count)
@@ -34,8 +34,6 @@ func main() {
 	go FindPrimeNumbers(301, 400, &wg, 4, &count)
 	go FindPrimeNumbers(401, 500, &wg, 5, &count)
 	go FindPrimeNumbers(501, 600, &wg, 6, &count)
-	go FindPrimeNumbers(601, 700, &wg, 7, &count)
-	go FindPrimeNumbers(701, 800, &wg, 8, &count)
 
 	wg.Wait()
 
@@ -44,5 +42,12 @@ func main() {
 }
 
 /*
+
+- RACE CONDITION
+  - two or more goroutines access the same variable
+  - at least one of them is doing write operation
 - SYNCHRONIZATION
+  - memory sharing
+  - message passing
+
 */

@@ -15,7 +15,7 @@ func FindPrimeNumbers(
 ) {
 	for i := lowerBound; i <= upperBound; i++ {
 		if num.IsPrime(i) {
-			time.Sleep(100 * time.Millisecond) // Simulate a long-running operation
+			num.ProcessingPrimeNumbers(i)
 			fmt.Println("Robot", robotNumber, "found prime number:", i)
 
 			results <- i
@@ -31,7 +31,7 @@ func main() {
 	results := make(chan int)
 
 	wg := sync.WaitGroup{}
-	wg.Add(8)
+	wg.Add(6)
 
 	go FindPrimeNumbers(1, 100, &wg, 1, results)
 	go FindPrimeNumbers(101, 200, &wg, 2, results)
@@ -39,8 +39,6 @@ func main() {
 	go FindPrimeNumbers(301, 400, &wg, 4, results)
 	go FindPrimeNumbers(401, 500, &wg, 5, results)
 	go FindPrimeNumbers(501, 600, &wg, 6, results)
-	go FindPrimeNumbers(601, 700, &wg, 7, results)
-	go FindPrimeNumbers(701, 800, &wg, 8, results)
 
 	go func() {
 		wg.Wait()
@@ -56,3 +54,11 @@ func main() {
 	fmt.Println("Total prime numbers found:", count)
 	fmt.Println("finished in:", time.Since(start))
 }
+
+/*
+
+- SYNCHRONIZATION
+  - memory sharing => mutex
+  - message passing => channel
+
+*/

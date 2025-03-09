@@ -1,5 +1,7 @@
 package go_concurrency
 
+import "time"
+
 func IsPrime(n int) bool {
 	if n < 2 {
 		return false
@@ -10,4 +12,9 @@ func IsPrime(n int) bool {
 		}
 	}
 	return true
+}
+
+func ProcessingPrimeNumbers(n int) {
+	// Simulate a long-running operation
+	time.Sleep(100*time.Millisecond + time.Duration(n)*0*time.Millisecond)
 }
