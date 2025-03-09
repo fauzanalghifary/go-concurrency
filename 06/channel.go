@@ -26,7 +26,7 @@ func main() {
 /*
 
 - CHANNELS
-  - blocking: send and receive operations block until the other side is ready
+  - blocking: "send" and "receive" operations is blocking until both sides are ready
   - might cause deadlock if not handled properly
 
 */
