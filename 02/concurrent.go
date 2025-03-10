@@ -40,8 +40,8 @@ func main() {
 
 - Concurrent program
 - Concurrency vs Parallelism
-  - Concurrency is about PLANNING how to do many tasks at the same time;
-  - Parallelism is about PERFORMING many tasks at the same time.
+  - Concurrency is about DEALING with lots of things at once.
+  - Parallelism is about DOING lots of things at once.
   - Concurrency ENABLES parallelism.
 
 - The requirement of parallel execution:

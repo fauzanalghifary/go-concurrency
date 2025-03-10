@@ -10,7 +10,7 @@ func FindPrimeNumbers(lowerBound, upperBound int) {
 	for i := lowerBound; i <= upperBound; i++ {
 		if num.IsPrime(i) {
 			num.ProcessingPrimeNumbers(i) // Simulate a long-running operation
-			fmt.Println("Found prime number: ", i)
+			fmt.Println("Found prime number:", i)
 		}
 	}
 }
