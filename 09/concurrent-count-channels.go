@@ -61,7 +61,8 @@ func main() {
   - message passing => channel
 
 - Which one to use?
-  - One of Go’s mottos is: “Share memory by communicating, don’t communicate by sharing memory.”
+  - One of Go’s mottos is:
+	“Share memory by communicating, don’t communicate by sharing memory.”
 	(https://go.dev/wiki/MutexOrChannel)
 
 */

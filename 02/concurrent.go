@@ -18,6 +18,16 @@ func FindPrimeNumbers(lowerBound, upperBound int, wg *sync.WaitGroup, robotNumbe
 	wg.Done()
 }
 
+/*
+
+- Concurrent program
+- Concurrency vs Parallelism
+  - Concurrency is about DEALING with lots of things at once.
+  - Parallelism is about DOING lots of things at once.
+  - Concurrency ENABLES parallelism.
+
+*/
+
 func main() {
 	start := time.Now()
 
@@ -38,13 +48,7 @@ func main() {
 
 /*
 
-- Concurrent program
-- Concurrency vs Parallelism
-  - Concurrency is about DEALING with lots of things at once.
-  - Parallelism is about DOING lots of things at once.
-  - Concurrency ENABLES parallelism.
-
-- The requirement of parallel execution:
+- The requirements of parallel execution:
   - Hardware support
   - Task independence
 	~ Task decomposition
