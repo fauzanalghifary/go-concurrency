@@ -61,9 +61,7 @@ func main() {
   - message passing => channel
 
 - Which one to use?
-  - Use whichever is most expressive and/or most simple.
-  - One of Go’s mottos is:
-	“Share memory by communicating, don’t communicate by sharing memory.”
-	(https://go.dev/wiki/MutexOrChannel)
+  - Go’s philosophy on concurrency can be summed up like this:
+    aim for simplicity, use channels when possible, and treat goroutines like a free resource.
 
 */
