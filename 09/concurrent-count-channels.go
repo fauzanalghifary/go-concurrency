@@ -10,14 +10,14 @@ import (
 func FindPrimeNumbers(
 	lowerBound, upperBound int,
 	wg *sync.WaitGroup,
-	results chan<- int,
+	resultsChannel chan<- int,
 ) {
 	for i := lowerBound; i <= upperBound; i++ {
 		if num.IsPrime(i) {
 			num.ProcessingPrimeNumbers(i)
 			//fmt.Println("Robot", robotNumber, "found prime number:", i)
 
-			results <- i
+			resultsChannel <- i
 		}
 	}
 
